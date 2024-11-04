@@ -1,10 +1,14 @@
-from fastapi_users.db import SQLAlchemyBaseUserTableUUID
-from sqlalchemy.orm import DeclarativeBase
+from sqlalchemy import Column, Integer, String
+from .database import Base
 
 
-class Base(DeclarativeBase):
-    pass
+class Album(Base):
+    __tablename__ = "albums"
 
-
-class User(SQLAlchemyBaseUserTableUUID, Base):
-    pass
+    id = Column(Integer, primary_key=True, index=True)
+    title = Column(String, index=True)
+    artist = Column(String)
+    year = Column(Integer)
+    genre = Column(String)
+    label = Column(String)
+    description = Column(String)

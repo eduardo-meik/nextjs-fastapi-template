@@ -1,15 +1,15 @@
-import uuid
-
-from fastapi_users import schemas
-
-
-class UserRead(schemas.BaseUser[uuid.UUID]):
-    pass
+from pydantic import BaseModel
+from typing import Optional
 
 
-class UserCreate(schemas.BaseUserCreate):
-    pass
+class AlbumCreate(BaseModel):
+    title: str
+    artist: str
+    description: Optional[str]
 
 
-class UserUpdate(schemas.BaseUserUpdate):
-    pass
+class AlbumResponse(AlbumCreate):
+    id: int
+
+    class Config:
+        from_attributes = True
